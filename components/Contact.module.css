@@ -1,0 +1,56 @@
+.contact {
+    position: relative;
+    padding: 12rem 4rem;
+    text-align: center;
+    z-index: 1;
+}
+
+.contactTitle {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+}
+
+.contactBtn {
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    background: transparent;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contactBtn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(122, 111, 240, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.contactBtn:hover::before {
+    left: 100%;
+}
+
+.contactBtn:hover {
+    border-color: var(--highlight);
+    box-shadow: 0 0 30px rgba(0, 232, 198, 0.3);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .contact {
+        padding: 6rem 2rem;
+    }
+}

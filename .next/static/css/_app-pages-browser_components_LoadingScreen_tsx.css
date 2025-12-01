@@ -1,0 +1,41 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/LoadingScreen.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.LoadingScreen_loadingScreen__lRm3o {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.LoadingScreen_loadingScreen__lRm3o.LoadingScreen_hidden__MVpev {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.LoadingScreen_loadingContent__ndn9l {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.LoadingScreen_countUp__vvABA {
+    font-size: clamp(4rem, 12vw, 10rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+}
+
+.LoadingScreen_countLabel__EgBiq {
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 300;
+    color: #B0B0B0;
+}
+

@@ -1,0 +1,147 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/LiquidEther.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+.LiquidEther_liquidEther__nB5AF {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    touch-action: none;
+    background: radial-gradient(circle at 50% 50%, rgba(82, 39, 255, 0.1), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 159, 252, 0.1), transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(177, 158, 239, 0.1), transparent 50%);
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/Footer.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+.Footer_footer__pQtti {
+    position: relative;
+    padding: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1;
+}
+
+.Footer_footerContent__yAl3k {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.Footer_footerSocial__mGyvm {
+    display: flex;
+    gap: 2rem;
+}
+
+.Footer_socialLink__hPzxm {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.Footer_socialLink__hPzxm:hover {
+    color: var(--highlight);
+}
+
+.Footer_footerCopy__9pU9z {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.Footer_footerGlow__wpmZM {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--highlight), transparent);
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .Footer_footerContent__yAl3k {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/*!********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./app/work/work.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************/
+.work_backLink__Zurr6 {
+    position: fixed;
+    top: 2rem;
+    left: 4rem;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    z-index: 100;
+    transition: all 0.3s ease;
+}
+
+.work_backLink__Zurr6:hover {
+    color: var(--primary);
+    transform: translateX(-5px);
+}
+
+.work_workPage__7Sfp5 {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    padding: 8rem 2rem;
+}
+
+@media (max-width: 768px) {
+    .work_backLink__Zurr6 {
+        left: 2rem;
+    }
+}
+
+.work_container__TCn5A {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.work_title__nOu0M {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    animation: work_fadeInUp__82PO5 1s ease;
+}
+
+.work_subtitle__ESTLd {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    animation: work_fadeInUp__82PO5 1.2s ease;
+}
+
+@keyframes work_fadeInUp__82PO5 {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+

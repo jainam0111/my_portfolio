@@ -1,0 +1,405 @@
+/*!*****************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/LiquidEther.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************/
+.LiquidEther_liquidEther__nB5AF {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    touch-action: none;
+    background: radial-gradient(circle at 50% 50%, rgba(82, 39, 255, 0.1), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 159, 252, 0.1), transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(177, 158, 239, 0.1), transparent 50%);
+}
+
+/*!**********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/Hero.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************/
+.Hero_hero__bqvNd {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.Hero_heroContent__5prE1 {
+    text-align: center;
+    animation: Hero_fadeInUp__eGRou 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 90%;
+    max-width: 1200px;
+}
+
+.Hero_heroTitleWrapper__OBGpF {
+    width: 100%;
+    height: clamp(100px, 15vw, 200px);
+    margin-bottom: 1.5rem;
+    pointer-events: auto;
+}
+
+.Hero_heroTitleFallback__Pf2mh {
+    font-size: clamp(3rem, 10vw, 8rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.Hero_heroSubtitle__YDR1I {
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: var(--muted);
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 2rem;
+}
+
+.Hero_workLink__MAiDC {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    background: transparent;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.Hero_workLink__MAiDC::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(122, 111, 240, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.Hero_workLink__MAiDC:hover::before {
+    left: 100%;
+}
+
+.Hero_workLink__MAiDC:hover {
+    border-color: var(--highlight);
+    box-shadow: 0 0 30px rgba(0, 232, 198, 0.3);
+    transform: translateY(-2px);
+}
+
+.Hero_heroLocation__chdRE {
+    position: absolute;
+    bottom: 4rem;
+    left: 4rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+    letter-spacing: 0.5px;
+}
+
+@keyframes Hero_fadeInUp__eGRou {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .Hero_heroLocation__chdRE {
+        left: 2rem;
+        bottom: 2rem;
+    }
+}
+
+/*!**************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/Identity.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************/
+.Identity_identity__Oc9b2 {
+    position: relative;
+    padding: 6rem 4rem;
+    text-align: center;
+    z-index: 1;
+}
+
+.Identity_identityText__lfIb6 {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--muted);
+    font-weight: 300;
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.8;
+    min-height: 80px;
+}
+
+.Identity_cursor__Op3ji {
+    display: inline-block;
+    margin-left: 0.25rem;
+    animation: Identity_blink__bhL_i 0.7s infinite;
+}
+
+@keyframes Identity_blink__bhL_i {
+    0%, 50% {
+        opacity: 1;
+    }
+    51%, 100% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .Identity_identity__Oc9b2 {
+        padding: 4rem 2rem;
+    }
+}
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/About.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+.About_about__fFfvC {
+    position: relative;
+    padding: 8rem 4rem;
+    z-index: 1;
+}
+
+.About_aboutContainer__XmYp8 {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-gap: 6rem;
+    gap: 6rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.About_aboutVisual__dFTqq {
+    position: relative;
+    height: 500px;
+}
+
+.About_aboutShape__C_ME_ {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: linear-gradient(135deg, var(--accent), var(--highlight));
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    opacity: 0.15;
+    animation: About_morphShape__0fqil 8s ease-in-out infinite;
+    filter: blur(40px);
+}
+
+.About_sectionTitle__6_fnl {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 300;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+}
+
+.About_aboutText__dxdCw {
+    font-size: 1.2rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.About_aboutText__dxdCw strong {
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.About_domainsList__tD9ob {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 2rem;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.About_domain__3B5jo {
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.About_domain__3B5jo:hover {
+    border-color: var(--accent);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(122, 111, 240, 0.15);
+}
+
+.About_domainTitle__DLpf7 {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--primary);
+    margin-bottom: 0.75rem;
+    letter-spacing: -0.01em;
+}
+
+.About_domainDesc__ghnaA {
+    font-size: 1rem;
+    color: var(--muted);
+    line-height: 1.6;
+    margin: 0;
+}
+
+@keyframes About_morphShape__0fqil {
+    0%, 100% {
+        border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+    }
+    50% {
+        border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .About_aboutContainer__XmYp8 {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .About_aboutVisual__dFTqq {
+        height: 300px;
+    }
+}
+
+@media (max-width: 768px) {
+    .About_about__fFfvC {
+        padding: 4rem 2rem;
+    }
+}
+
+/*!*************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/Contact.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************/
+.Contact_contact__fU08Y {
+    position: relative;
+    padding: 12rem 4rem;
+    text-align: center;
+    z-index: 1;
+}
+
+.Contact_contactTitle__Pjhc6 {
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 300;
+    margin-bottom: 3rem;
+    letter-spacing: -0.02em;
+}
+
+.Contact_contactBtn__A_0Cw {
+    display: inline-block;
+    padding: 1.5rem 4rem;
+    background: transparent;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border: 1px solid var(--accent);
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Contact_contactBtn__A_0Cw::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(122, 111, 240, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.Contact_contactBtn__A_0Cw:hover::before {
+    left: 100%;
+}
+
+.Contact_contactBtn__A_0Cw:hover {
+    border-color: var(--highlight);
+    box-shadow: 0 0 30px rgba(0, 232, 198, 0.3);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .Contact_contact__fU08Y {
+        padding: 6rem 2rem;
+    }
+}
+
+/*!************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[5].use[3]!./components/Footer.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************/
+.Footer_footer__pQtti {
+    position: relative;
+    padding: 4rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1;
+}
+
+.Footer_footerContent__yAl3k {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.Footer_footerSocial__mGyvm {
+    display: flex;
+    gap: 2rem;
+}
+
+.Footer_socialLink__hPzxm {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.Footer_socialLink__hPzxm:hover {
+    color: var(--highlight);
+}
+
+.Footer_footerCopy__9pU9z {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.Footer_footerGlow__wpmZM {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--highlight), transparent);
+    opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+    .Footer_footerContent__yAl3k {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
