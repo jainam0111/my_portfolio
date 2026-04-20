@@ -1,25 +1,16 @@
-/* ── Scroll space ─────────────────────────────────────────────── */
+/* ── Section ──────────────────────────────────────────────────── */
 .workSection {
   position: relative;
-  /* height set dynamically on desktop */
-}
-
-/* ── Sticky viewport ──────────────────────────────────────────── */
-.stickyContainer {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+  padding: 10rem 0 8rem;
+  z-index: 2;
 }
 
 /* ── Header ───────────────────────────────────────────────────── */
 .sectionHeader {
-  padding: 1.4rem 4rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  flex-shrink: 0;
-  max-width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .sectionTitle {
@@ -50,30 +41,18 @@
   100% { background-position: 300% 0%; }
 }
 
-/* ── Horizontal track ─────────────────────────────────────────── */
-.track {
-  display: flex;
-  flex: 1;
-  align-items: center;
-  will-change: transform;
-}
-
-/* ── Each slide is one viewport wide ─────────────────────────── */
-.slide {
-  width: 100vw;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ── Card wrapper ─────────────────────────────────────────────── */
+.cardWrap {
+  max-width: 1100px;
+  margin: 0 auto;
   padding: 0 4rem;
+  position: relative;
 }
 
 /* ── Card ─────────────────────────────────────────────────────── */
 .card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  width: 100%;
-  max-width: 1060px;
   border-radius: 16px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.03);
@@ -226,68 +205,77 @@
   user-select: none;
 }
 
-/* ── Progress bar ─────────────────────────────────────────────── */
-.progressBar {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: rgba(255, 255, 255, 0.25);
-  transform-origin: left center;
-  z-index: 10;
+/* ── Navigation ───────────────────────────────────────────────── */
+.nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
 }
 
-/* ── Mobile: horizontal swipe ─────────────────────────────────── */
+.navBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.navBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ── Dots ─────────────────────────────────────────────────────── */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.4rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.dotActive {
+  background: #ffffff;
+  transform: scale(1.4);
+}
+
+/* ── Mobile ───────────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .workSection {
-    height: auto !important;
-    padding: 4rem 0 3rem;
-  }
-
-  .stickyContainer {
-    position: relative;
-    height: auto;
-    overflow: hidden;
+    padding: 5rem 0 4rem;
   }
 
   .sectionHeader {
-    padding: 0 1.25rem 1.5rem;
-    border-bottom: none;
+    padding: 0 1.25rem;
+    margin-bottom: 2rem;
   }
 
-  /* Horizontal swipe track — CSS scroll-snap */
-  .track {
-    flex-direction: row;
-    overflow-x: scroll;
-    overflow-y: visible;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 0 1.25rem 1.5rem;
-    gap: 1rem;
-    will-change: auto;
-    /* reset framer-motion transform */
-    transform: none !important;
-  }
-
-  .track::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Each card snaps into place */
-  .slide {
-    width: 82vw;
-    flex-shrink: 0;
-    padding: 0;
-    scroll-snap-align: start;
+  .cardWrap {
+    padding: 0 1.25rem;
   }
 
   .card {
     grid-template-columns: 1fr;
     min-height: unset;
-    border-radius: 14px;
-    width: 100%;
+    border-radius: 12px;
   }
 
   .cardLeft {
@@ -309,12 +297,16 @@
     padding: 0.2rem 0.65rem;
   }
 
-  /* Right panel stays hidden — keeps card compact */
   .cardRight {
     display: none;
   }
 
-  .progressBar {
-    display: none;
+  .nav {
+    justify-content: center;
+    margin-top: 1.2rem;
+  }
+
+  .dots {
+    justify-content: center;
   }
 }
