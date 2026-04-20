@@ -161,9 +161,11 @@ export default function LiquidEther() {
       window.removeEventListener('resize', onResize)
       window.removeEventListener('mousemove', onMouseMove)
       cancelAnimationFrame(animationId)
-      if (container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement)
-      }
+      try {
+        if (container && renderer.domElement && container.contains(renderer.domElement)) {
+          container.removeChild(renderer.domElement)
+        }
+      } catch (_) {}
       geometry.dispose()
       material.dispose()
       renderer.dispose()

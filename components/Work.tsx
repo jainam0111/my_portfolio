@@ -86,8 +86,8 @@ export default function Work() {
           <h2 className={styles.sectionTitle}>WORK</h2>
         </div>
 
-        {/* Scrollable track */}
-        <motion.div className={styles.track} style={{ x }}>
+        {/* Scrollable track — desktop: scroll-driven x; mobile: CSS scroll-snap */}
+        <motion.div className={styles.track} style={isMobile ? undefined : { x }}>
           {workData.map((item, index) => (
             <div
               key={index}
