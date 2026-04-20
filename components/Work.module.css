@@ -238,65 +238,47 @@
   z-index: 10;
 }
 
-/* ── Mobile: horizontal swipe ─────────────────────────────────── */
+/* ── Mobile: vertical stack ───────────────────────────────────── */
 @media (max-width: 768px) {
   .workSection {
     height: auto !important;
-    padding: 4rem 0 3rem;
+    padding: 5rem 0 4rem;
   }
 
   .stickyContainer {
     position: relative;
     height: auto;
-    overflow: hidden;
+    overflow: visible;
   }
 
   .sectionHeader {
-    padding: 0 1.25rem 1.5rem;
-    border-bottom: none;
+    padding: 0 1.25rem;
+    margin-bottom: 2rem;
   }
 
-  /* Horizontal swipe track — CSS scroll-snap */
   .track {
-    flex-direction: row;
-    overflow-x: scroll;
-    overflow-y: visible;
-    scroll-snap-type: x mandatory;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding: 0 1.25rem 1.5rem;
-    gap: 1rem;
-    will-change: auto;
-    /* reset framer-motion transform */
-    transform: none !important;
+    flex-direction: column;
+    align-items: stretch;
   }
 
-  .track::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Each card snaps into place */
   .slide {
-    width: 82vw;
-    flex-shrink: 0;
-    padding: 0;
-    scroll-snap-align: start;
+    width: 100%;
+    padding: 0.75rem 1.25rem;
   }
 
   .card {
     grid-template-columns: 1fr;
     min-height: unset;
-    border-radius: 14px;
-    width: 100%;
+    border-radius: 12px;
   }
 
   .cardLeft {
     padding: 1.75rem 1.5rem 2rem;
-    gap: 0.9rem;
+    gap: 1rem;
   }
 
   .cardTitle {
-    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    font-size: clamp(1.7rem, 7.5vw, 2.4rem);
   }
 
   .cardDesc {
@@ -309,7 +291,6 @@
     padding: 0.2rem 0.65rem;
   }
 
-  /* Right panel stays hidden — keeps card compact */
   .cardRight {
     display: none;
   }
