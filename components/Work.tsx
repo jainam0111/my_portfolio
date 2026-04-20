@@ -67,30 +67,19 @@ export default function Work() {
     offset: ['start start', 'end end'],
   })
 
-  // Each panel gets its own 100 vh window:
-  //   segment 0        → panel 1 stationary (dwell)
-  //   segments 1‥count-1 → transitions between panels
-  //   segment count    → panel N stationary (dwell)
-  // Total segments = count + 1  →  section height = (count + 2) * 100vh
-  const step = 1 / (count + 1)
-  const scrollStops = Array.from({ length: count + 2 }, (_, i) => i * step)
-  const xValues = [
-    '0vw',
-    '0vw',                                                            // panel 1 dwell
-    ...Array.from({ length: count - 2 }, (_, i) => `${-(i + 1) * 100}vw`),
-    `${-(count - 1) * 100}vw`,
-    `${-(count - 1) * 100}vw`,                                       // panel N dwell
-  ]
-
-  const xHorizontal = useTransform(scrollYProgress, scrollStops, xValues)
-  const xDisabled   = useTransform(scrollYProgress, [0, 1], ['0vw', '0vw'])
+  const xHorizontal = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ['0vw', `${-(count - 1) * 100}vw`]
+  )
+  const xDisabled = useTransform(scrollYProgress, [0, 1], ['0vw', '0vw'])
   const x = isMobile ? xDisabled : xHorizontal
 
   return (
     <section
       ref={containerRef}
       className={styles.workSection}
-      style={isMobile ? undefined : { height: `${(count + 2) * 100}vh` }}
+      style={isMobile ? undefined : { height: `${(count + 1) * 100}vh` }}
     >
       <div className={styles.stickyContainer}>
         <div className={styles.sectionHeader}>
