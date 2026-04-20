@@ -52,11 +52,18 @@ const workData: WorkItemData[] = [
 
 export default function Work() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const trackRef = useRef<HTMLDivElement>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [trackWidth, setTrackWidth] = useState(0)
   const count = workData.length
 
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768)
+    const check = () => {
+      setIsMobile(window.innerWidth <= 768)
+      if (trackRef.current) {
+        setTrackWidth(trackRef.current.scrollWidth - window.innerWidth)
+      }
+    }
     check()
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
@@ -67,19 +74,13 @@ export default function Work() {
     offset: ['start start', 'end end'],
   })
 
-  const xHorizontal = useTransform(
-    scrollYProgress,
-    [0, 1],
-    ['0vw', `${-(count - 1) * 100}vw`]
-  )
-  const xDisabled = useTransform(scrollYProgress, [0, 1], ['0vw', '0vw'])
-  const x = isMobile ? xDisabled : xHorizontal
+  const x = useTransform(scrollYProgress, [0, 1], [0, -trackWidth])
 
   return (
     <section
       ref={containerRef}
       className={styles.workSection}
-      style={isMobile ? undefined : { height: `${(count + 1) * 100}vh` }}
+      style={isMobile ? undefined : { height: `${count * 100}vh` }}
     >
       <div className={styles.stickyContainer}>
         <div className={styles.sectionHeader}>
@@ -87,7 +88,11 @@ export default function Work() {
         </div>
 
         {/* Scrollable track — desktop: scroll-driven x; mobile: CSS scroll-snap */}
-        <motion.div className={styles.track} style={isMobile ? undefined : { x }}>
+        <motion.div
+          ref={trackRef}
+          className={styles.track}
+          style={isMobile ? undefined : { x }}
+        >
           {workData.map((item, index) => (
             <div
               key={index}
