@@ -19,7 +19,6 @@
   padding: 1.4rem 4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   flex-shrink: 0;
-  max-width: 100%;
 }
 
 .sectionTitle {
@@ -242,7 +241,6 @@
 @media (max-width: 768px) {
   .workSection {
     height: auto !important;
-    padding: 5rem 0 4rem;
   }
 
   .stickyContainer {
@@ -252,8 +250,7 @@
   }
 
   .sectionHeader {
-    padding: 0 1.25rem;
-    margin-bottom: 2rem;
+    padding: 2rem 1.5rem;
   }
 
   .track {
@@ -263,32 +260,16 @@
 
   .slide {
     width: 100%;
-    padding: 0.75rem 1.25rem;
+    padding: 1.5rem 1.5rem;
   }
 
   .card {
     grid-template-columns: 1fr;
     min-height: unset;
-    border-radius: 12px;
   }
 
   .cardLeft {
-    padding: 1.75rem 1.5rem 2rem;
-    gap: 1rem;
-  }
-
-  .cardTitle {
-    font-size: clamp(1.7rem, 7.5vw, 2.4rem);
-  }
-
-  .cardDesc {
-    font-size: 0.88rem;
-    max-width: 100%;
-  }
-
-  .tag {
-    font-size: 0.62rem;
-    padding: 0.2rem 0.65rem;
+    padding: 2rem 1.5rem;
   }
 
   .cardRight {
