@@ -40,9 +40,7 @@ export default function Hero() {
           )}
         </div>
         <p className={styles.heroSubtitle}>Creative Developer • Backend Engineer • AI/ML Builder</p>
-        <Link href="/work" className={styles.workLink}>
-          View Work →
-        </Link>
+
       </div>
       <div className={styles.heroLocation}>Based in India</div>
     </section>

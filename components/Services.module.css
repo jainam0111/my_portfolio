@@ -1,0 +1,180 @@
+.services {
+  position: relative;
+  padding: 10rem 0 8rem;
+  z-index: 2;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 4rem;
+}
+
+/* ── Section label ──────────────────────────────────── */
+.label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.45em;
+  color: rgba(255, 255, 255, 0.3);
+  margin-bottom: 3rem;
+}
+
+/* ── Headline block ─────────────────────────────────── */
+.headline {
+  padding-bottom: 5rem;
+}
+
+.headingStack {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.8rem;
+  /* Tight vertical rhythm — lines sit close together */
+  gap: 0.1em;
+}
+
+.headingLine {
+  font-size: clamp(3.2rem, 6.5vw, 7.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: #fff;
+  margin: 0;
+}
+
+/* Row that clips the sliding word vertically */
+.rotatingRow {
+  overflow: hidden;
+  line-height: 0.92;
+}
+
+/* Inline block so it sizes to the word */
+.rotatingWrapper {
+  display: inline-block;
+  overflow: hidden;
+  /* Match heading height so layout doesn't jump */
+  height: calc(clamp(3.2rem, 6.5vw, 7.5rem) * 0.92);
+}
+
+.rotatingWord {
+  display: block;
+  font-size: clamp(3.2rem, 6.5vw, 7.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 0.92;
+  color: #c0c0c0;
+  text-shadow: 0 0 50px rgba(200, 200, 200, 0.15);
+}
+
+.sub {
+  font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.72;
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ── Divider (draws left → right on scroll) ─────────── */
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.09);
+  transform-origin: left center;
+}
+
+/* ── Service row ────────────────────────────────────── */
+.row {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 0 3rem;
+  padding: 4rem 0;
+  align-items: start;
+}
+
+.num {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--accent, #7A6FF0);
+  padding-top: 0.55rem;
+}
+
+.rowBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.rowTitle {
+  font-size: clamp(2rem, 3.5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  color: #fff;
+  line-height: 0.95;
+  margin: 0;
+  /* Subtle accent underline on hover */
+  transition: color 0.3s ease;
+}
+
+.row:hover .rowTitle {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.rowSkills {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.28);
+  line-height: 2;
+  margin: 0;
+}
+
+.rowDesc {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.48);
+  line-height: 1.78;
+  font-weight: 300;
+  max-width: 560px;
+  margin: 0;
+}
+
+/* ── Mobile ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .services {
+    padding: 6rem 0 5rem;
+  }
+
+  .container {
+    padding: 0 1.5rem;
+  }
+
+  .headingStack {
+    gap: 0.05em;
+  }
+
+  .rotatingWrapper {
+    height: calc(clamp(3.2rem, 12vw, 5rem) * 0.92);
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 3rem 0;
+  }
+
+  .num {
+    padding-top: 0;
+  }
+
+  .rowTitle {
+    font-size: clamp(1.8rem, 8vw, 2.8rem);
+  }
+
+  .rowDesc {
+    max-width: 100%;
+  }
+}
