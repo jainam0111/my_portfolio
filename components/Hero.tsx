@@ -39,7 +39,11 @@ export default function Hero() {
             <h1 className={styles.heroTitleFallback}>Jainam Bhavsar</h1>
           )}
         </div>
-        <p className={styles.heroSubtitle}>Creative Developer • Backend Engineer • AI/ML Builder</p>
+        <p className={styles.heroSubtitle}>
+          <span>Creative Developer</span>
+          <span>Backend Engineer</span>
+          <span>AI/ML Builder</span>
+        </p>
 
       </div>
       <div className={styles.heroLocation}>Based in India</div>

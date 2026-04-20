@@ -101,32 +101,51 @@
 /* ── Mobile ────────────────────────────────────────── */
 @media (max-width: 768px) {
   .about {
-    padding: 6rem 0 5rem;
+    padding: 5rem 0 4rem;
   }
 
   .container {
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
+  }
+
+  .label {
+    margin-bottom: 2rem;
+    font-size: 0.72rem;
+  }
+
+  .intro {
+    padding-bottom: 3rem;
   }
 
   .statement {
-    font-size: clamp(1.6rem, 6.5vw, 2.4rem);
+    font-size: clamp(1.4rem, 5.5vw, 2rem);
+    line-height: 1.4;
   }
 
   .block {
     grid-template-columns: 1fr;
-    gap: 1rem;
-    padding: 3rem 0;
+    gap: 0.8rem;
+    padding: 2.5rem 0;
   }
 
   .num {
     padding-top: 0;
+    font-size: 0.7rem;
   }
 
   .blockTitle {
-    font-size: clamp(2rem, 9vw, 3rem);
+    font-size: clamp(1.6rem, 7.5vw, 2.4rem);
+  }
+
+  .skills {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .desc {
     max-width: 100%;
+    font-size: 0.9rem;
   }
 }

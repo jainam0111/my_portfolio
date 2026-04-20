@@ -51,6 +51,12 @@
 
 @media (max-width: 768px) {
     .contact {
-        padding: 6rem 2rem;
+        padding: 5rem 1.25rem;
+    }
+
+    .contactTitle {
+        font-size: clamp(1.8rem, 7.5vw, 2.8rem);
+        line-height: 1.2;
+        margin-bottom: 2rem;
     }
 }
