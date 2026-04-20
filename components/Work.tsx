@@ -79,7 +79,7 @@ export default function Work() {
     <section
       ref={containerRef}
       className={styles.workSection}
-      style={isMobile ? undefined : { height: `${(count + 1) * 100}vh` }}
+      style={isMobile ? undefined : { height: `${count * 100}vh` }}
     >
       <div className={styles.stickyContainer}>
         <div className={styles.sectionHeader}>
