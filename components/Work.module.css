@@ -1,87 +1,282 @@
-.work {
-    position: relative;
-    padding: 8rem 4rem;
-    z-index: 1;
+/* ── Scroll space ─────────────────────────────────────────────── */
+.workSection {
+  position: relative;
+  /* height set dynamically on desktop */
+}
+
+/* ── Sticky viewport ──────────────────────────────────────────── */
+.stickyContainer {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Header ───────────────────────────────────────────────────── */
+.sectionHeader {
+  padding: 1.4rem 4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
 }
 
 .sectionTitle {
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 300;
-    margin-bottom: 4rem;
-    text-align: center;
-    letter-spacing: -0.02em;
+  font-size: clamp(2.8rem, 5vw, 6.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(
+    100deg,
+    #555555 0%,
+    #ffffff 20%,
+    #888888 38%,
+    #ffffff 56%,
+    #666666 74%,
+    #ffffff 88%,
+    #555555 100%
+  );
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shaderFlow 7s linear infinite;
 }
 
-.workGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 3rem;
-    max-width: 1400px;
-    margin: 0 auto;
+@keyframes shaderFlow {
+  0%   { background-position:   0% 0%; }
+  100% { background-position: 300% 0%; }
 }
 
-.workCard {
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+/* ── Horizontal track ─────────────────────────────────────────── */
+.track {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  will-change: transform;
 }
 
-.workCard:hover {
-    transform: translateY(-10px);
+/* ── Each slide is one viewport wide ─────────────────────────── */
+.slide {
+  width: 100vw;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4rem;
 }
 
-.workImage {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 16/10;
-    background: var(--glass);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    overflow: hidden;
-    margin-bottom: 1.5rem;
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+/* ── Card ─────────────────────────────────────────────────────── */
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 1060px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  min-height: 420px;
 }
 
-.workCard:hover .workImage {
-    transform: scale(1.02);
-    border-color: var(--accent);
-    box-shadow: 0 20px 60px rgba(122, 111, 240, 0.2),
-                0 0 40px rgba(0, 232, 198, 0.1);
+/* ── Left panel ───────────────────────────────────────────────── */
+.cardLeft {
+  padding: 3rem 3rem 3rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  justify-content: center;
 }
 
-.workPlaceholder {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 3rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.1);
-    letter-spacing: 2px;
+.cardMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  font-family: 'Courier New', monospace;
 }
 
-.workTitle {
-    font-size: 1.5rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.01em;
+.cardNum {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--card-color, #a0a0a0);
 }
 
-.workDesc {
-    font-size: 1rem;
-    color: var(--muted);
-    font-weight: 300;
+.cardSlash {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.2);
 }
 
-@media (max-width: 1024px) {
-    .workGrid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-    }
+.cardTotal {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.25);
 }
 
+.cardCategoryYear {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0;
+}
+
+.cardTitle {
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  color: #fff;
+  line-height: 0.95;
+  margin: 0;
+}
+
+.cardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--card-color, #a0a0a0);
+  border: 1px solid var(--card-color, #a0a0a0);
+  border-radius: 100px;
+  padding: 0.25rem 0.8rem;
+  opacity: 0.75;
+}
+
+.cardDesc {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.42);
+  line-height: 1.75;
+  font-weight: 300;
+  max-width: 420px;
+  margin: 0;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--card-color, #a0a0a0);
+  text-decoration: none;
+  border-bottom: 1px solid var(--card-color, #a0a0a0);
+  padding-bottom: 0.2rem;
+  width: fit-content;
+  transition: opacity 0.3s ease, gap 0.3s ease;
+}
+
+.cardLink:hover {
+  opacity: 0.6;
+  gap: 0.7rem;
+}
+
+.linkArrow {
+  font-size: 0.9rem;
+}
+
+/* ── Right panel ──────────────────────────────────────────────── */
+.cardRight {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+.cardVisual {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 60% 50%,
+    var(--card-color, #a0a0a0),
+    transparent 65%
+  );
+  opacity: 0.12;
+}
+
+.visualGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.visualNum {
+  position: absolute;
+  bottom: -0.1em;
+  right: 0.05em;
+  font-size: clamp(8rem, 14vw, 14rem);
+  font-weight: 900;
+  color: var(--card-color, #ffffff);
+  opacity: 0.13;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── Progress bar ─────────────────────────────────────────────── */
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  transform-origin: left center;
+  z-index: 10;
+}
+
+/* ── Mobile: vertical stack ───────────────────────────────────── */
 @media (max-width: 768px) {
-    .work {
-        padding: 4rem 2rem;
-    }
+  .workSection {
+    height: auto !important;
+  }
+
+  .stickyContainer {
+    position: relative;
+    height: auto;
+    overflow: visible;
+  }
+
+  .sectionHeader {
+    padding: 2rem 1.5rem;
+  }
+
+  .track {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .slide {
+    width: 100%;
+    padding: 1.5rem 1.5rem;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+    min-height: unset;
+  }
+
+  .cardLeft {
+    padding: 2rem 1.5rem;
+  }
+
+  .cardRight {
+    display: none;
+  }
+
+  .progressBar {
+    display: none;
+  }
 }
