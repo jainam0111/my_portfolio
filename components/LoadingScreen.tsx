@@ -13,36 +13,32 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [count, setCount] = useState(0)
 
   useEffect(() => {
+    const isMobile = window.innerWidth <= 768
+    const t = isMobile ? 0.45 : 0.75   // time multiplier — mobile is faster
+
     const sequence = async () => {
-      // Step 0: Namaste (Display for 2s)
-      await new Promise(r => setTimeout(r, 2000))
+      // Step 0: Namaste
+      await new Promise(r => setTimeout(r, 1000 * t))
       setStep(1)
 
-      // Step 1: Welcome (Display for 2s)
-      await new Promise(r => setTimeout(r, 2000))
+      // Step 1: Welcome
+      await new Promise(r => setTimeout(r, 900 * t))
       setStep(2)
 
-      // Step 2: Counter (0-100 over 2.5s)
-      const duration = 2500
+      // Step 2: Counter (0-100)
+      const duration = 1400 * t
       const startTime = Date.now()
 
       const animateCount = () => {
         const elapsed = Date.now() - startTime
         const progress = Math.min(elapsed / duration, 1)
-
-        // Ease out quart
         const eased = 1 - Math.pow(1 - progress, 4)
-        const currentValue = Math.floor(eased * 100)
-
-        setCount(currentValue)
+        setCount(Math.floor(eased * 100))
 
         if (progress < 1) {
           requestAnimationFrame(animateCount)
         } else {
-          // Wait a moment at 100% then finish
-          setTimeout(() => {
-            onComplete()
-          }, 500)
+          setTimeout(onComplete, 200)
         }
       }
 

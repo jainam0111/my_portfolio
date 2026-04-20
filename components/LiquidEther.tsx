@@ -9,6 +9,7 @@ export default function LiquidEther() {
 
   useEffect(() => {
     if (!containerRef.current) return
+    if (window.innerWidth <= 768) return   // skip WebGL on mobile — too heavy
 
     const container = containerRef.current
 
@@ -22,7 +23,7 @@ export default function LiquidEther() {
       powerPreference: "high-performance"
     })
     renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
     container.appendChild(renderer.domElement)
 
     // Shader Uniforms — greyscale fluid, no colour uniforms needed
