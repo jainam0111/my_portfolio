@@ -100,7 +100,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 style={{ width: `${count}%` }}
               />
             </div>
-            <p className={styles.tagline}>Designed. Coded. and Loved By jainam Bhasvar</p>
+            <p className={styles.tagline}>Designed. Coded. and Loved By Jainam Bhavsar</p>
           </motion.div>
         )}
       </AnimatePresence>
