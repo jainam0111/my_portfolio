@@ -3,58 +3,13 @@
 import styles from './Work.module.css'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
-
-interface WorkItemData {
-  title: string
-  category: string
-  year: string
-  description: string
-  tags: string[]
-  color: string
-  url?: string
-}
-
-const workData: WorkItemData[] = [
-  {
-    title: 'Cipher Vault',
-    category: 'Security System',
-    year: '2024 – 2025',
-    description: 'A robust password security tool built with advanced encryption architecture. Protects credentials with military-grade cipher systems and zero-knowledge design.',
-    tags: ['Encryption', 'Zero-Knowledge', 'Security'],
-    color: '#eab308',
-  },
-  {
-    title: 'Skate Labs',
-    category: 'Web Development',
-    year: '2024 – 2025',
-    description: 'A modern, high-performance website for Skate Labs India. Built for visual impact, speed, and a seamless experience that represents the brand authentically.',
-    tags: ['Next.js', 'Motion', 'Branding'],
-    color: '#a0a0a0',
-    url: 'https://skate-labs-india.vercel.app/',
-  },
-  {
-    title: 'N8N Automation',
-    category: 'AI Automation',
-    year: '2025 – 2026',
-    description: 'Advanced automation workflows orchestrated with N8N. Connecting APIs, AI services, and business logic into seamless, intelligent pipelines that run 24/7.',
-    tags: ['N8N', 'AI Agents', 'Pipelines'],
-    color: '#3b82f6',
-  },
-  {
-    title: 'Go Parking',
-    category: 'Web Development',
-    year: '2024 – 2025',
-    description: 'A high-credibility web presence designed for investors and enterprise clients. Trust-driven structure, modern typography, and clean visual hierarchy.',
-    tags: ['Next.js', 'UI/UX', 'Enterprise'],
-    color: '#22c55e',
-  },
-]
+import Link from 'next/link'
+import { projects } from '@/lib/projects'
 
 export default function Work() {
   const containerRef = useRef<HTMLDivElement>(null)
-  const trackRef = useRef<HTMLDivElement>(null)
   const [isMobile, setIsMobile] = useState(false)
-  const count = workData.length
+  const count = projects.length
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768)
@@ -85,22 +40,15 @@ export default function Work() {
           <h2 className={styles.sectionTitle}>WORK</h2>
         </div>
 
-        {/* Scrollable track — desktop: scroll-driven x; mobile: CSS scroll-snap */}
-        <motion.div
-          ref={trackRef}
-          className={styles.track}
-          style={isMobile ? undefined : { x }}
-        >
-          {workData.map((item, index) => (
-            <div
-              key={index}
-              className={styles.slide}
-            >
-              <div
+        <motion.div className={styles.track} style={isMobile ? undefined : { x }}>
+          {projects.map((item, index) => (
+            <div key={item.slug} className={styles.slide}>
+              <Link
+                href={`/work/${item.slug}`}
                 className={styles.card}
                 style={{ '--card-color': item.color } as React.CSSProperties}
               >
-                {/* Left panel */}
+                {/* Left panel — Client / Role / Timeline */}
                 <div className={styles.cardLeft}>
                   <div className={styles.cardMeta}>
                     <span className={styles.cardNum}>0{index + 1}</span>
@@ -108,44 +56,61 @@ export default function Work() {
                     <span className={styles.cardTotal}>0{count}</span>
                   </div>
 
-                  <p className={styles.cardCategoryYear}>
-                    {item.category}&nbsp;&nbsp;/&nbsp;&nbsp;{item.year}
-                  </p>
-
                   <h3 className={styles.cardTitle}>{item.title}</h3>
-
-                  <div className={styles.cardTags}>
-                    {item.tags.map((tag) => (
-                      <span key={tag} className={styles.tag}>{tag}</span>
-                    ))}
-                  </div>
 
                   <p className={styles.cardDesc}>{item.description}</p>
 
-                  {item.url && (
-                    <a
-                      href={item.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={styles.cardLink}
-                    >
-                      View Project <span className={styles.linkArrow}>↗</span>
-                    </a>
-                  )}
+                  <div className={styles.panelMeta}>
+                    <div className={styles.metaRow}>
+                      <span className={styles.metaLabel}>Client</span>
+                      <span className={styles.metaValue}>{item.client}</span>
+                    </div>
+                    <div className={styles.metaRow}>
+                      <span className={styles.metaLabel}>Role</span>
+                      <span className={styles.metaValue}>{item.role}</span>
+                    </div>
+                    <div className={styles.metaRow}>
+                      <span className={styles.metaLabel}>Timeline</span>
+                      <span className={styles.metaValue}>{item.timeline}</span>
+                    </div>
+                  </div>
+
+                  <span className={styles.cardLink}>
+                    View Project <span className={styles.linkArrow}>↗</span>
+                  </span>
                 </div>
 
-                {/* Right panel */}
+                {/* Right panel — Challenge / Solution / Tech */}
                 <div className={styles.cardRight}>
                   <div className={styles.cardVisual} />
                   <div className={styles.visualGrid} />
-                  <span className={styles.visualNum}>0{index + 1}</span>
+
+                  <div className={styles.rightContent}>
+                    <div className={styles.rightBlock}>
+                      <span className={styles.blockLabel}>The Challenge</span>
+                      <p className={styles.blockText}>{item.challenge}</p>
+                    </div>
+
+                    <div className={styles.rightBlock}>
+                      <span className={styles.blockLabel}>The Solution</span>
+                      <p className={styles.blockText}>{item.solution}</p>
+                    </div>
+
+                    <div className={styles.rightBlock}>
+                      <span className={styles.blockLabel}>Tech Used</span>
+                      <div className={styles.techTags}>
+                        {item.tech.map((t) => (
+                          <span key={t} className={styles.techTag}>{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </Link>
             </div>
           ))}
         </motion.div>
 
-        {/* Progress bar */}
         <motion.div
           className={styles.progressBar}
           style={{ scaleX: scrollYProgress }}
