@@ -38,3 +38,21 @@ body {
 .main-content.visible {
     opacity: 1;
 }
+
+/* ── Mobile-only perf wins ────────────────────────────────────── */
+@media (max-width: 768px) {
+    /* Skip rendering work for sections far from the viewport.
+       Saves layout/paint for below-the-fold sections on mobile. */
+    .main-content > section {
+        content-visibility: auto;
+        contain-intrinsic-size: 100vh;
+    }
+    /* Disable expensive smooth-scroll on mobile — native scrolling is faster */
+    html {
+        scroll-behavior: auto;
+    }
+    /* Reduce input latency for taps */
+    a, button {
+        touch-action: manipulation;
+    }
+}

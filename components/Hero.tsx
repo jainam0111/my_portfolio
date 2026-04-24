@@ -1,28 +1,34 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import styles from './Hero.module.css'
 
-// Dynamically import TextPressure to avoid hydration issues
+// Dynamically import TextPressure to avoid hydration issues + skip its bundle on mobile
 const TextPressure = dynamic(() => import('./TextPressure'), {
   ssr: false,
   loading: () => <h1 className={styles.heroTitleFallback}>Jainam Bhavsar</h1>
 })
 
 export default function Hero() {
-  const [mounted, setMounted] = useState(false)
+  // Only enable TextPressure on devices with a real pointer (desktop/laptop)
+  // Mobile uses the static fallback — no infinite RAF loop, no per-frame layout reads.
+  const [enableInteractiveTitle, setEnableInteractiveTitle] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    if (typeof window === 'undefined') return
+    const isMobile = window.innerWidth <= 768
+    const hasFinePointer = window.matchMedia?.('(pointer: fine)').matches ?? true
+    if (!isMobile && hasFinePointer) {
+      setEnableInteractiveTitle(true)
+    }
   }, [])
 
   return (
     <section className={styles.hero}>
       <div className={styles.heroContent}>
         <div className={styles.heroTitleWrapper}>
-          {mounted ? (
+          {enableInteractiveTitle ? (
             <TextPressure
               text="Jainam Bhavsar"
               textColor="#FFFFFF"

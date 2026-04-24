@@ -383,6 +383,18 @@
     min-height: unset;
     border-radius: 14px;
     width: 100%;
+    /* Mobile perf: drop expensive compositor effects */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(18, 18, 20, 0.94);
+    box-shadow: none;
+    contain: content;
+    transform: none;
+  }
+
+  .card:hover {
+    transform: none;
+    box-shadow: none;
   }
 
   .cardLeft {

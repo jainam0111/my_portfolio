@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import LiquidEther from '@/components/LiquidEther'
 import Hero from '@/components/Hero'
@@ -15,7 +15,19 @@ import { usePerformanceTier } from '@/lib/usePerformanceTier'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
+  const [isMobile, setIsMobile] = useState(false)
   const tier = usePerformanceTier()
+
+  // Track mobile so we can avoid mounting WebGL/heavy components on phones
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
+  // WebGL is desktop-only. Low-tier desktops are also excluded.
+  const showWebGL = !loading && !isMobile && tier !== 'low'
 
   return (
     <>
@@ -26,8 +38,7 @@ export default function Home() {
       </AnimatePresence>
 
       <main className={`main-content ${!loading ? 'visible' : ''}`}>
-        {/* WebGL background only on capable devices and only after loading */}
-        {!loading && tier !== 'low' && (
+        {showWebGL && (
           <LiquidEther pixelRatioCap={tier === 'high' ? 1.5 : 1.0} />
         )}
         <Hero />
