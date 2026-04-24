@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import dynamic from 'next/dynamic'
+import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import LiquidEther from '@/components/LiquidEther'
 import Hero from '@/components/Hero'
@@ -11,11 +10,12 @@ import About from '@/components/About'
 import Services from '@/components/Services'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
-
 import LoadingScreen from '@/components/LoadingScreen'
+import { usePerformanceTier } from '@/lib/usePerformanceTier'
 
 export default function Home() {
   const [loading, setLoading] = useState(true)
+  const tier = usePerformanceTier()
 
   return (
     <>
@@ -26,7 +26,10 @@ export default function Home() {
       </AnimatePresence>
 
       <main className={`main-content ${!loading ? 'visible' : ''}`}>
-        <LiquidEther />
+        {/* WebGL background only on capable devices and only after loading */}
+        {!loading && tier !== 'low' && (
+          <LiquidEther pixelRatioCap={tier === 'high' ? 1.5 : 1.0} />
+        )}
         <Hero />
         <Identity />
         <Work />

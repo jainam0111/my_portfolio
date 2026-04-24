@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import styles from './LiquidEther.module.css'
 
-export default function LiquidEther() {
+export default function LiquidEther({ pixelRatioCap = 1.5 }: { pixelRatioCap?: number }) {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function LiquidEther() {
       powerPreference: "high-performance"
     })
     renderer.setSize(window.innerWidth, window.innerHeight)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, pixelRatioCap))
     container.appendChild(renderer.domElement)
 
     // Shader Uniforms — greyscale fluid, no colour uniforms needed
@@ -147,29 +147,39 @@ export default function LiquidEther() {
     window.addEventListener('resize', onResize)
     window.addEventListener('mousemove', onMouseMove)
 
-    // Animation Loop
+    // Animation Loop — capped at 60 fps regardless of monitor refresh rate
     let animationId: number
-    const animate = () => {
+    const targetFps = 60
+    const frameInterval = 1000 / targetFps
+    let lastFrameTime = 0
+
+    const animate = (currentTime: number) => {
+      animationId = requestAnimationFrame(animate)
+      const elapsed = currentTime - lastFrameTime
+      if (elapsed < frameInterval) return
+      lastFrameTime = currentTime - (elapsed % frameInterval)
+
       uniforms.uTime.value += 0.003     // ~0.18 units/sec at 60fps — slow organic drift
       renderer.render(scene, camera)
-      animationId = requestAnimationFrame(animate)
     }
-    animate()
+    animationId = requestAnimationFrame(animate)
 
-    // Cleanup
+    // Cleanup — every step guarded so a single null can't crash the page
     return () => {
-      window.removeEventListener('resize', onResize)
-      window.removeEventListener('mousemove', onMouseMove)
-      cancelAnimationFrame(animationId)
+      try { window.removeEventListener('resize', onResize) } catch (_) {}
+      try { window.removeEventListener('mousemove', onMouseMove) } catch (_) {}
+      try { if (animationId) cancelAnimationFrame(animationId) } catch (_) {}
       try {
-        if (container && renderer.domElement && container.contains(renderer.domElement)) {
-          container.removeChild(renderer.domElement)
+        const canvas = renderer?.domElement
+        if (canvas && canvas.parentNode) {
+          canvas.parentNode.removeChild(canvas)
         }
       } catch (_) {}
-      geometry.dispose()
-      material.dispose()
-      renderer.dispose()
+      try { geometry.dispose() } catch (_) {}
+      try { material.dispose() } catch (_) {}
+      try { renderer.dispose() } catch (_) {}
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
