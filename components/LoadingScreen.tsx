@@ -25,12 +25,20 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       await new Promise(r => setTimeout(r, 900 * t))
       setStep(2)
 
-      // Step 2: Counter (0-100)
+      // Step 2: Counter (0-100) — capped at 60 fps
       const duration = 1400 * t
-      const startTime = Date.now()
+      const startTime = performance.now()
+      const frameInterval = 1000 / 60
+      let lastFrame = 0
 
-      const animateCount = () => {
-        const elapsed = Date.now() - startTime
+      const animateCount = (now: number) => {
+        if (now - lastFrame < frameInterval) {
+          requestAnimationFrame(animateCount)
+          return
+        }
+        lastFrame = now
+
+        const elapsed = now - startTime
         const progress = Math.min(elapsed / duration, 1)
         const eased = 1 - Math.pow(1 - progress, 4)
         setCount(Math.floor(eased * 100))
